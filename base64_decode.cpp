@@ -1,4 +1,5 @@
 #include <base64.hpp>
+#include <atomic>
 
 namespace Base64 {
 	int _get_char(char ch) {

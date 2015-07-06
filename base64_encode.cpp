@@ -1,5 +1,6 @@
 #include <base64.hpp>
 #include <cstring>
+#include <atomic>
 
 namespace Base64 {
 	std::string _encode_split(std::string in) {
