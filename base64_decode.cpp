@@ -1,5 +1,4 @@
 #include <base64.hpp>
-#include <atomic>
 
 namespace Base64 {
 	int _get_char(char ch) {
@@ -13,10 +12,10 @@ namespace Base64 {
 	}
 	
 	std::string _decode_split(std::string in) {
-		uint32_t n = _get_char(in[0]) << 18 | 
-		             _get_char(in[1]) << 12 | 
-		             _get_char(in[2]) << 6  | 
-		             _get_char(in[3]);
+		auto n = _get_char(in[0]) << 18 | 
+		         _get_char(in[1]) << 12 | 
+		         _get_char(in[2]) << 6  | 
+		         _get_char(in[3]);
 		char s[4];
 		s[0] = (n & 0x00FF0000) >> 16;
 		s[1] = (n & 0x0000FF00) >> 8;
@@ -26,7 +25,7 @@ namespace Base64 {
 	}
 	
 	int decode(const std::string* src, std::string* dst) {
-		for(uint64_t i=0; i<src->length(); i+=4) {
+        for (std::string::size_type i = 0; i < src->length(); i += 4) {
 			dst->append( _decode_split(src->substr(i, 4)) );
 		}
 		return 0;
@@ -34,7 +33,7 @@ namespace Base64 {
 	
 	std::string decode(const std::string& src) {
 		std::string dst;
-		for(uint64_t i=0; i<src.length(); i+=4) {
+        for (std::string::size_type i = 0; i < src.length(); i += 4) {
 			dst.append( _decode_split(src.substr(i, 4)) );
 		}
 		return dst;
