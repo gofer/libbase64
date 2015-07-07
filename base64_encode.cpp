@@ -1,5 +1,4 @@
 #include <base64.hpp>
-#include <cstring>
 
 namespace Base64 {
 	std::string _encode_split(std::string in) {
@@ -13,11 +12,11 @@ namespace Base64 {
 	}
 	
 	int encode(const std::string* src, std::string* dst) {
-		for(uint64_t i=0; i<src->length(); i+=3) {
+                for (std::string::size_type i = 0; i < src->length(); i += 3) {
 			dst->append( _encode_split(src->substr(i, 3)) );
 		}
 		
-		switch(src->length() % 3) {
+		switch (src->length() % 3) {
 		case 0 : 
 			break;
 		case 1 : 
@@ -35,11 +34,11 @@ namespace Base64 {
 	
 	std::string encode(const std::string& src) {
 		std::string dst;
-		for(uint64_t i=0; i<src.length(); i+=3) {
+                for (std::string::size_type i = 0; i < src.length(); i += 3) {
 			dst = dst.append( _encode_split(src.substr(i, 3)) );
 		}
 		
-		switch(src.length() % 3) {
+		switch (src.length() % 3) {
 		case 0 : 
 			break;
 		case 1 : 
