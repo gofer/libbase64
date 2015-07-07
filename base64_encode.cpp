@@ -12,7 +12,7 @@ namespace Base64 {
 	}
 	
 	int encode(const std::string* src, std::string* dst) {
-        for (std::string::size_type i = 0; i < src->length(); i += 3) {
+                for (std::string::size_type i = 0; i < src->length(); i += 3) {
 			dst->append( _encode_split(src->substr(i, 3)) );
 		}
 		
@@ -34,7 +34,7 @@ namespace Base64 {
 	
 	std::string encode(const std::string& src) {
 		std::string dst;
-        for (std::string::size_type i = 0; i < src.length(); i += 3) {
+                for (std::string::size_type i = 0; i < src.length(); i += 3) {
 			dst = dst.append( _encode_split(src.substr(i, 3)) );
 		}
 		

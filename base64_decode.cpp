@@ -25,7 +25,7 @@ namespace Base64 {
 	}
 	
 	int decode(const std::string* src, std::string* dst) {
-        for (std::string::size_type i = 0; i < src->length(); i += 4) {
+                for (std::string::size_type i = 0; i < src->length(); i += 4) {
 			dst->append( _decode_split(src->substr(i, 4)) );
 		}
 		return 0;
@@ -33,7 +33,7 @@ namespace Base64 {
 	
 	std::string decode(const std::string& src) {
 		std::string dst;
-        for (std::string::size_type i = 0; i < src.length(); i += 4) {
+                for (std::string::size_type i = 0; i < src.length(); i += 4) {
 			dst.append( _decode_split(src.substr(i, 4)) );
 		}
 		return dst;
