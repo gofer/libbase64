@@ -12,15 +12,19 @@ namespace Base64 {
 	}
 	
 	std::string _decode_split(std::string in) {
+    in.resize(4, 0);
+    
 		uint32_t n = _get_char(in[0]) << 18 | 
 		             _get_char(in[1]) << 12 | 
 		             _get_char(in[2]) << 6  | 
 		             _get_char(in[3]);
+    
 		char s[4];
 		s[0] = (n & 0x00FF0000) >> 16;
 		s[1] = (n & 0x0000FF00) >> 8;
 		s[2] = (n & 0x000000FF) >> 0;
 		s[3] = '\0';
+    
 		return std::string(s);
 	}
 	
