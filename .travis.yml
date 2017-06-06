@@ -7,5 +7,5 @@ addons:
     sources:
       - ubuntu-toolcahin-r-test
     packages:
-      - g++-6
+      - g++-4.9
 scripts: make && make test
