@@ -17,7 +17,7 @@ Encode function is in namespace Base64. This function always return 0.
 Decode function is in namespace Base64. This function always return 0.
 
     int Base64::decode(const std::string* src, std::string* dst);
-	
+  
 ### With reference
 Encode function is in namespace Base64.
 

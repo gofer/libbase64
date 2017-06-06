@@ -8,4 +8,4 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-6
-scripts: make && make test
+script: make && make test

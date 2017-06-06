@@ -4,25 +4,25 @@
 #include <base64.hpp>
 
 int main(void) {
-	const std::string *src = new std::string("Karen Kujo");
+  const std::string *src = new std::string("Karen Kujo");
   const std::string *dst = new std::string("S2FyZW4gS3Vqbw==");
   
-	std::string *dst_e = new std::string();
-	std::string *dst_d = new std::string();
-	
-	Base64::encode(src, dst_e);
-	
-	assert(*dst_e == *dst);
-	
-	Base64::decode(reinterpret_cast<const std::string*>(dst_e), dst_d);
-	
-	assert(*dst_d == *src);
-	
-	delete src;
+  std::string *dst_e = new std::string();
+  std::string *dst_d = new std::string();
+  
+  Base64::encode(src, dst_e);
+  
+  assert(*dst_e == *dst);
+  
+  Base64::decode(reinterpret_cast<const std::string*>(dst_e), dst_d);
+  
+  assert(*dst_d == *src);
+  
+  delete src;
   delete dst;
   
-	delete dst_e;
-	delete dst_d;
-	
-	return 0;
+  delete dst_e;
+  delete dst_d;
+  
+  return 0;
 }

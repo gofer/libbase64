@@ -4,16 +4,16 @@
 #include <base64.hpp>
 
 int main(void) {
-	const std::string src("");
+  const std::string src("");
   const std::string dst("");
   
-	std::string dst_e = Base64::encode(src);
+  std::string dst_e = Base64::encode(src);
   
-	assert(dst_e == dst);
+  assert(dst_e == dst);
   
   std::string dst_d = Base64::decode(dst_e);
-	
+  
   assert(dst_d == src);
-	
-	return 0;
+  
+  return 0;
 }
