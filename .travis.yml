@@ -1,0 +1,11 @@
+language: cpp
+os: linux
+dist: trusty
+compiler: gcc
+addons:
+  apt:
+    sources:
+      - ubuntu-toolcahin-r-test
+    packages:
+      - g++-6
+scripts: make && make test
