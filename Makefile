@@ -12,18 +12,18 @@ ARFLAGS = rsv
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-  $(AR) $(ARFLAGS) -o $@ $^
+	$(AR) $(ARFLAGS) -o $@ $^
 
 .cpp.o:
-  $(CXX) $(CXXFLAGS) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-  cd test; make test
+	cd test; make test
 
 clean:
-  pushd test && make clean && popd
-  rm -f *.o
+	pushd test && make clean && popd
+	rm -f *.o
 
 distclean:
-  pushd test && make distclean && popd
-  make clean && rm -f $(TARGET)
+	pushd test && make distclean && popd
+	make clean && rm -f $(TARGET)

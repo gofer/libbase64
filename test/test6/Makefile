@@ -13,16 +13,16 @@ CXXFLAGS += -std=c++11 -I../../include
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-  $(LD) $(LDFLAGS) -o $@ $^ -lbase64
+	$(LD) $(LDFLAGS) -o $@ $^ -lbase64
 
 .cpp.o:
-  $(CXX) $(CXXFLAGS) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-  ./$(TARGET)
+	./$(TARGET)
 
 clean:
-  rm -f *.o
+	rm -f *.o
 
 distclean:
-  make clean && rm -f $(TARGET)
+	make clean && rm -f $(TARGET)
