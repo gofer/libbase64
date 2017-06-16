@@ -7,6 +7,13 @@ This is Base64 encode/decode library for C++.
 ## Attention
 This code uses C++11 features.
 
+## How to Build
+If you have `make` command, type
+
+    make
+
+to build this library.
+
 ## How to use
 
 ### With pointer
@@ -28,10 +35,27 @@ Decode function is in namespace Base64.
     std::string Base64::decode(const std::string& src);
 
 ### Examples
-In detail, please shows base64_test.cpp.
+An example code is here.
+
+```c++{base64_test.cpp}
+#include <iostream>
+#include <base64.hpp>
+
+int main()
+{
+  std::string src = "hogefoobar";
+  
+  std::string dst = encode(src);
+  
+  std::cout << src << ": " << dst << std::endl;
+  
+  return 0;
+}
+```
+
 That code is compiled on following commands.
 
-    g++ base64_test.cpp -I. -L. -lbase64 -std=c++11 -o test.out
+    g++ -Iinclude -L. base64_test.cpp -lbase64 -std=c++11 -o base64_test.out
 
 ## Licence
 This codes are licensed by New BSD License.
