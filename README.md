@@ -45,7 +45,7 @@ int main()
 {
   std::string src = "hogefoobar";
   
-  std::string dst = encode(src);
+  std::string dst = Base64::encode(src);
   
   std::cout << src << ": " << dst << std::endl;
   
