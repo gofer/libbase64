@@ -13,9 +13,13 @@ addons:
 env:
   - GTEST_DIR="/usr/local/googletest/googletest-1.8.0"
 before_install:
-  - sudo git clone https://github.com/google/googletest /usr/src
-  - cd /usr/src/googletest && sudo git checkout release-1.8.0
-  - cd /usr/src/googletest && sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/googletest/googletest-1.8.0 && sudo make && sudo make install 
+  - sudo git clone https://github.com/google/googletest
+  - cd googletest
+  - sudo git checkout release-1.8.0
+  - sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/googletest/googletest-1.8.0
+  - sudo make
+  - sudo make install
+  - cd ..
 script: 
-  - cd /home/travis/build/gofer/libbase64
-  - make && make test
+  - make
+  - make test
