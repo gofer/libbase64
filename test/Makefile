@@ -1,7 +1,5 @@
 TEST_DIRS = test1 test2 test3 test4 test5 test6 test7
 
-GTEST_DIR = /usr/local/googletest/googletest-1.8.0
-
 .PHONY: all test distclean
 
 all:

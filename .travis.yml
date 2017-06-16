@@ -10,8 +10,5 @@ addons:
       - g++-6
       - cmake-data
       - cmake
-env:
-  - GTEST_DIR="/usr/local/googletest/googletest-1.8.0"
-before_script:
-  - git clone https://github.com/google/googletest /usr/src && cd /usr/src/googletest && git checkout release-1.8.0 && cmake . && make && make install
+      - libgtest-dev
 script: make && make test
