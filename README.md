@@ -57,5 +57,7 @@ That code is compiled on following commands.
 
     g++ -Iinclude -L. base64_test.cpp -lbase64 -std=c++11 -o base64_test.out
 
+In detail, see sample directory.
+
 ## Licence
 This codes are licensed by New BSD License.

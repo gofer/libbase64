@@ -1,4 +1,7 @@
 *.o
 lib*.a
 lib*.so
-test/test*/test.out
+sample/*.o
+sample/*.out
+test/test*/*.o
+test/test*/*.out

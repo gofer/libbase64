@@ -4,8 +4,8 @@ SRCS=test.cpp
 OBJS=$(addsuffix .o,$(basename $(SRCS)))
 
 LD = g++
-LDFLAGS += -L../../
-CXXFLAGS += -std=c++11 -I../../include
+LDFLAGS += -L../../ -L$(GTEST_DIR)/lib
+CXXFLAGS += -std=c++11 -I../../include -I$(GTEST_DIR)/include
 
 .SUFFIXES: .cpp .hpp
 .PHONY: all test clean distclean
@@ -13,7 +13,7 @@ CXXFLAGS += -std=c++11 -I../../include
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^ -lbase64
+	$(LD) $(LDFLAGS) -o $@ $^ -lbase64 -lgtest -lgtest_main -lpthread
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -o $@ -c $<

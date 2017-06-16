@@ -1,11 +1,24 @@
 #include <iostream>
 #include <string>
-#include <cassert>
 #include <base64.hpp>
+#include <gtest/gtest.h>
 
-int main(void) {
-  const std::string *src = new std::string("Karen Kujo");
-  const std::string *dst = new std::string("S2FyZW4gS3Vqbw==");
+TEST(TestCase7_Risa_Taneda_Multibyte_UTF8_mod0, WithRefrence) {
+  const std::string src("種田梨沙");
+  const std::string dst("56iu55Sw5qKo5rKZ");
+  
+  std::string dst_e = Base64::encode(src);
+  
+  assert(dst_e == dst);
+  
+  std::string dst_d = Base64::decode(dst_e);
+  
+  assert(dst_d == src);
+}
+
+TEST(TestCase7_Risa_Taneda_Multibyte_UTF8_mod0, WithPointer) {
+  const std::string *src = new std::string("種田梨沙");
+  const std::string *dst = new std::string("56iu55Sw5qKo5rKZ");
   
   std::string *dst_e = new std::string();
   std::string *dst_d = new std::string();
@@ -23,6 +36,4 @@ int main(void) {
   
   delete dst_e;
   delete dst_d;
-  
-  return 0;
 }
