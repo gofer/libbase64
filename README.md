@@ -37,7 +37,7 @@ Decode function is in namespace Base64.
 ### Examples
 An example code is here.
 
-```c++{base64_test.cpp}
+```c++
 #include <iostream>
 #include <base64.hpp>
 
