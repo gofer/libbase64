@@ -9,11 +9,11 @@ TEST(TestCase4_Karen_Kujo_mod2, WithRefrence) {
   
   std::string dst_e = Base64::encode(src);
   
-  assert(dst_e == dst);
+  ASSERT_EQ(dst_e, dst);
   
   std::string dst_d = Base64::decode(dst_e);
   
-  assert(dst_d == src);
+  ASSERT_EQ(dst_d, src);
 }
 
 TEST(TestCase4_Karen_Kujo_mod2, WithPointer) {
@@ -25,11 +25,11 @@ TEST(TestCase4_Karen_Kujo_mod2, WithPointer) {
   
   Base64::encode(src, dst_e);
   
-  assert(*dst_e == *dst);
+  ASSERT_EQ(*dst_e, *dst);
   
   Base64::decode(reinterpret_cast<const std::string*>(dst_e), dst_d);
   
-  assert(*dst_d == *src);
+  ASSERT_EQ(*dst_d, *src);
   
   delete src;
   delete dst;

@@ -3,9 +3,9 @@
 #include <base64.hpp>
 #include <gtest/gtest.h>
 
-TEST(TestCase7_Risa_Taneda_Multibyte_UTF8_mod0, WithRefrence) {
-  const std::string src("種田梨沙");
-  const std::string dst("56iu55Sw5qKo5rKZ");
+TEST(TestCase8_Failed_Test, WithRefrence) {
+  const std::string src("hoge");
+  const std::string dst("foo");
   
   std::string dst_e = Base64::encode(src);
   
@@ -16,9 +16,9 @@ TEST(TestCase7_Risa_Taneda_Multibyte_UTF8_mod0, WithRefrence) {
   ASSERT_EQ(dst_d, src);
 }
 
-TEST(TestCase7_Risa_Taneda_Multibyte_UTF8_mod0, WithPointer) {
-  const std::string *src = new std::string("種田梨沙");
-  const std::string *dst = new std::string("56iu55Sw5qKo5rKZ");
+TEST(TestCase8_Failed_Test, WithPointer) {
+  const std::string *src = new std::string("hoge");
+  const std::string *dst = new std::string("foo");
   
   std::string *dst_e = new std::string();
   std::string *dst_d = new std::string();
