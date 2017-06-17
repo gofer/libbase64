@@ -1,5 +1,5 @@
 # Base64 Encode/Decode Library for C++
-[![BuldStatus](https://travis-ci.org/gofer/libbase64.svg?branch=dev-gtest)](https://travis-ci.org/gofer/libbase64)
+[![BuldStatus](https://travis-ci.org/gofer/libbase64.svg?branch=master)](https://travis-ci.org/gofer/libbase64)
 
 ## What's this
 This is Base64 encode/decode library for C++.
