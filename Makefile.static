@@ -21,9 +21,9 @@ test: $(TARGET)
 	cd test; make test GTEST_DIR=/usr/local/googletest/googletest-1.8.0
 
 clean:
-	pushd test && make clean && popd
+	cd test && make clean && cd ..
 	rm -f src/*.o
 
 distclean:
-	pushd test && make distclean && popd
+	cd test && make distclean && cd ..
 	make clean && rm -f $(TARGET)
