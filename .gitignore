@@ -1,6 +1,6 @@
 *.o
-lib*.a
-lib*.so
+lib/lib*.a
+lib/lib*.so
 sample/*.o
 sample/*.out
 test/test*/*.o
