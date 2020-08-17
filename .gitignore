@@ -1,7 +1,6 @@
 *.o
-src/.*
-lib/lib*.a
-lib/lib*.so
+src/.build*
+lib
 sample/*.o
 sample/*.out
 test/test*/*.o
