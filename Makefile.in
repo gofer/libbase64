@@ -1,0 +1,9 @@
+STATIC_TARGET = lib/libbase64.a
+SHARED_TARGET = lib/libbase64.so
+
+SRCS = src/base64_encode.cpp src/base64_decode.cpp
+OBJS = $(addsuffix .o,$(basename $(SRCS)))
+
+CXXFLAGS += -std=c++11 -Iinclude
+
+.SUFFIXES: .cpp .hpp

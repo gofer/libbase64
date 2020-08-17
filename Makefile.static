@@ -1,28 +1,28 @@
-TARGET = lib/libbase64.a
+include Makefile.in
 
-SRCS = src/base64_encode.cpp src/base64_decode.cpp
-OBJS = $(addsuffix .o,$(basename $(SRCS)))
+OBJDIR = src/.build-static
+TARGET = $(STATIC_TARGET)
 
-CXXFLAGS += -std=c++11 -Iinclude
+CXXFLAGS += -static
 ARFLAGS = rsv
 
-.SUFFIXES: .cpp .hpp
 .PHONY: all test clean distclean
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(AR) $(ARFLAGS) -o $@ $^
+	$(AR) $(ARFLAGS) -o $@ $(addprefix $(OBJDIR)/,$(notdir $^))
 
 .cpp.o:
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	if [ ! -d $(OBJDIR) ]; then mkdir -p $(OBJDIR); fi
+	$(CXX) $(CXXFLAGS) -o $(OBJDIR)/$(notdir $@) -c $<
 
 test: $(TARGET)
-	cd test; make test
+	cd test; make test-static
 
 clean:
 	cd test && make clean && cd ..
-	rm -f src/*.o
+	rm -rf $(OBJDIR)
 
 distclean:
 	cd test && make distclean && cd ..

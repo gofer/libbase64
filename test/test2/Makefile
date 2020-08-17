@@ -1,4 +1,6 @@
-TARGET = test.out
+STATIC_TARGET = test.static.out
+SHARED_TARGET = test.shared.out
+TARGET = $(STATIC_TARGET) $(SHARED_TARGET)
 
 SRCS=test.cpp
 OBJS=$(addsuffix .o,$(basename $(SRCS)))
@@ -13,14 +15,28 @@ LIBS=-lbase64
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+static: $(STATIC_TARGET)
+
+shared: $(SHARED_TARGET)
+
+$(STATIC_TARGET): $(OBJS)
+	$(LD) $(LDFLAGS) -o $@ $^ ../../lib/libbase64.a
+
+$(SHARED_TARGET): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-	GTEST_COLOR=1 ./$(TARGET)
+	make test-static
+	make test-shared
+
+test-static: $(STATIC_TARGET)
+	GTEST_COLOR=1 ./test.static.out
+
+test-shared: $(SHARED_TARGET)
+	LD_LIBRARY_PATH=../../lib:${LD_LIBRARY_PATH} GTEST_COLOR=1 ./test.shared.out
 
 clean:
 	rm -f *.o

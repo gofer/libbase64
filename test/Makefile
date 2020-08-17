@@ -8,6 +8,12 @@ all:
 test:
 	@for dir in $(TEST_DIRS); do cd $${dir}; make test; ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
 
+test-static:
+	@for dir in $(TEST_DIRS); do cd $${dir}; make test-static; ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
+
+test-shared:
+	@for dir in $(TEST_DIRS); do cd $${dir}; make test-shared; ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
+
 clean:
 	@for dir in $(TEST_DIRS); do cd $${dir}; make clean; cd ..; done
 

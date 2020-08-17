@@ -1,24 +1,34 @@
-TARGET = lib/libbase64.a lib/libbase64.so
+include Makefile.in
+
+TARGET = $(TARGET_STATIC) $(TARGET_SHARED)
 
 .PHONY: all test clean distclean
 
-all: $(TARGET)
+all:
+	make shared
+	make static
 
-lib/libbase64.a:
-	mkdir -p lib
-	make -f Makefile.static
-	make -f Makefile.static test
-	make -f Makefile.static clean
-
-lib/libbase64.so: lib/libbase64.a
-	mkdir -p lib
-	make -f Makefile.shared
-	make -f Makefile.shared test
-	make -f Makefile.shared clean
+static: lib/libbase64.a
 
 shared: lib/libbase64.so
 
-static: lib/libbase64.a
+lib/libbase64.a:
+	@if [ ! -d lib ]; then mkdir -p lib; fi
+	make -f Makefile.static
+
+lib/libbase64.so:
+	@if [ ! -d lib ]; then mkdir -p lib; fi
+	make -f Makefile.shared
+
+test: $(TARGET)
+	make test-static
+	make test-shared
+
+test-static: lib/libbase64.a
+	make -f Makefile.static test
+
+test-shared: lib/libbase64.so
+	make -f Makefile.shared test
 
 clean:
 	make -f Makefile.static clean

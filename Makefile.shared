@@ -1,27 +1,27 @@
-TARGET = lib/libbase64.so
+include Makefile.in
 
-SRCS = src/base64_encode.cpp src/base64_decode.cpp
-OBJS = $(addsuffix .o,$(basename $(SRCS)))
+OBJDIR = src/.build-shared
+TARGET = $(SHARED_TARGET)
 
-CXXFLAGS += -fPIC -std=c++11 -Iinclude
+CXXFLAGS += -shared -fPIC
 
-.SUFFIXES: .cpp .hpp
 .PHONY: all test clean distclean
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) -shared -fPIC $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $(addprefix $(OBJDIR)/,$(notdir $^))
 
 .cpp.o:
-	$(CXX) -fPIC $(CXXFLAGS) -o $@ -c $<
+	if [ ! -d $(OBJDIR) ]; then mkdir -p $(OBJDIR); fi
+	$(CXX) $(CXXFLAGS) -o $(OBJDIR)/$(notdir $@) -c $<
 
 test: $(TARGET)
-	cd test; LD_LIBRARY_PATH=$(shell pwd)/lib make test
+	cd test; make test-shared
 
 clean:
 	cd test && make clean && cd ..
-	rm -f src/*.o
+	rm -rf $(OBJDIR)
 
 distclean:
 	cd test && make distclean && cd ..
