@@ -8,9 +8,9 @@ all:
 	make shared
 	make static
 
-static: lib/libbase64.a
+static: $(STATIC_TARGET)
 
-shared: lib/libbase64.so
+shared: $(SHARED_TARGET)
 
 lib/libbase64.a:
 	@if [ ! -d lib ]; then mkdir -p lib; fi
@@ -24,10 +24,10 @@ test: $(TARGET)
 	make test-static
 	make test-shared
 
-test-static: lib/libbase64.a
+test-static: $(STATIC_TARGET)
 	make -f Makefile.static test
 
-test-shared: lib/libbase64.so
+test-shared: $(SHARED_TARGET)
 	make -f Makefile.shared test
 
 clean:
