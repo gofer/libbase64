@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-	cd test; make test GTEST_DIR=/usr/local/googletest/googletest-1.8.0
+	cd test; make test GTEST_DIR=$(GTEST_DIR)
 
 clean:
 	cd test && make clean && cd ..

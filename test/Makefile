@@ -6,6 +6,7 @@ all:
 	@for dir in $(TEST_DIRS); do cd $${dir}; make GTEST_DIR=$(GTEST_DIR); ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
 
 test:
+	GTEST_DIR=$(GTEST_DIR)
 	@for dir in $(TEST_DIRS); do cd $${dir}; make test GTEST_DIR=$(GTEST_DIR); ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
 
 clean:

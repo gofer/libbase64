@@ -3,7 +3,7 @@ TARGET = libbase64.so
 SRCS = src/base64_encode.cpp src/base64_decode.cpp
 OBJS = $(addsuffix .o,$(basename $(SRCS)))
 
-CXXFLAGS += -std=c++11 -Iinclude
+CXXFLAGS += -fPIC -std=c++11 -Iinclude
 
 .SUFFIXES: .cpp .hpp
 .PHONY: all test clean distclean
@@ -17,7 +17,7 @@ $(TARGET): $(OBJS)
 	$(CXX) -fPIC $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-	cd test; LD_LIBRARY_PATH=$(shell pwd) make test GTEST_DIR=/usr/local/googletest/googletest-1.8.0
+	cd test; LD_LIBRARY_PATH=$(shell pwd) make test GTEST_DIR=$(GTEST_DIR)
 
 clean:
 	cd test && make clean && cd ..
