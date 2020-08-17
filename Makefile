@@ -12,11 +12,11 @@ static: $(STATIC_TARGET)
 
 shared: $(SHARED_TARGET)
 
-lib/libbase64.a:
+$(STATIC_TARGET):
 	@if [ ! -d lib ]; then mkdir -p lib; fi
 	make -f Makefile.static
 
-lib/libbase64.so:
+$(SHARED_TARGET):
 	@if [ ! -d lib ]; then mkdir -p lib; fi
 	make -f Makefile.shared
 
