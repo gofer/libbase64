@@ -4,8 +4,9 @@ SRCS=test.cpp
 OBJS=$(addsuffix .o,$(basename $(SRCS)))
 
 LD = g++
-LDFLAGS += -L../../ -L$(GTEST_DIR)/lib
-CXXFLAGS += -std=c++11 -I../../include -I$(GTEST_DIR)/include
+LDFLAGS += -L../../ $(shell pkg-config --libs gtest gtest_main)
+CXXFLAGS += -std=c++11 -I../../include $(shell pkg-config --cflags gtest gtest_main)
+LIBS=-lbase64
 
 .SUFFIXES: .cpp .hpp
 .PHONY: all test clean distclean
@@ -13,13 +14,13 @@ CXXFLAGS += -std=c++11 -I../../include -I$(GTEST_DIR)/include
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^ -lbase64 -lgtest -lgtest_main -lpthread
+	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-	./$(TARGET)
+	GTEST_COLOR=1 ./$(TARGET)
 
 clean:
 	rm -f *.o

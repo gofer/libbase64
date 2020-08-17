@@ -6,12 +6,12 @@ all: $(TARGET)
 
 libbase64.a:
 	make -f Makefile.static
-	make -f Makefile.static test GTEST_DIR=$(GTEST_DIR)
+	make -f Makefile.static test
 	make -f Makefile.static clean
 
 libbase64.so: libbase64.a
 	make -f Makefile.shared
-	make -f Makefile.shared test GTEST_DIR=$(GTEST_DIR)
+	make -f Makefile.shared test
 	make -f Makefile.shared clean
 
 clean:

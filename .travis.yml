@@ -11,12 +11,12 @@ addons:
       - cmake-data
       - cmake
 env:
-  - GTEST_DIR="/usr/local/googletest/googletest-1.10.0"
+  - GTEST_DIR="/usr/local"
 before_install:
   - sudo git clone https://github.com/google/googletest
   - cd googletest
   - sudo git checkout release-1.10.0
-  - sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/googletest/googletest-1.10.0
+  - sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/local
   - sudo make
   - sudo make install
   - cd ..

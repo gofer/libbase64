@@ -3,11 +3,10 @@ TEST_DIRS = test1 test2 test3 test4 test5 test6 test7
 .PHONY: all test distclean
 
 all:
-	@for dir in $(TEST_DIRS); do cd $${dir}; make GTEST_DIR=$(GTEST_DIR); ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
+	@for dir in $(TEST_DIRS); do cd $${dir}; make; ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
 
 test:
-	GTEST_DIR=$(GTEST_DIR)
-	@for dir in $(TEST_DIRS); do cd $${dir}; make test GTEST_DIR=$(GTEST_DIR); ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
+	@for dir in $(TEST_DIRS); do cd $${dir}; make test; ret=$$?; if [ $${ret} -ne 0 ]; then exit $${ret}; fi; cd ..; done
 
 clean:
 	@for dir in $(TEST_DIRS); do cd $${dir}; make clean; cd ..; done

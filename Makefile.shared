@@ -17,7 +17,7 @@ $(TARGET): $(OBJS)
 	$(CXX) -fPIC $(CXXFLAGS) -o $@ -c $<
 
 test: $(TARGET)
-	cd test; LD_LIBRARY_PATH=$(shell pwd) make test GTEST_DIR=$(GTEST_DIR)
+	cd test; LD_LIBRARY_PATH=$(shell pwd) make test
 
 clean:
 	cd test && make clean && cd ..
