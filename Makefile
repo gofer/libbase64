@@ -27,3 +27,4 @@ clean:
 distclean:
 	make -f Makefile.static distclean
 	make -f Makefile.shared distclean
+	rm -rf lib
