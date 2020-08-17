@@ -10,8 +10,6 @@ addons:
       - g++-9
       - cmake-data
       - cmake
-env:
-  - GTEST_DIR="/usr/local"
 before_install:
   - sudo git clone https://github.com/google/googletest
   - cd googletest
