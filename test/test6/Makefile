@@ -4,7 +4,7 @@ SRCS=test.cpp
 OBJS=$(addsuffix .o,$(basename $(SRCS)))
 
 LD = g++
-LDFLAGS += -L../../ $(shell pkg-config --libs gtest gtest_main)
+LDFLAGS += -L../../lib $(shell pkg-config --libs gtest gtest_main)
 CXXFLAGS += -std=c++11 -I../../include $(shell pkg-config --cflags gtest gtest_main)
 LIBS=-lbase64
 

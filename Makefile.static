@@ -1,4 +1,4 @@
-TARGET = libbase64.a
+TARGET = lib/libbase64.a
 
 SRCS = src/base64_encode.cpp src/base64_decode.cpp
 OBJS = $(addsuffix .o,$(basename $(SRCS)))
