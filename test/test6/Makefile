@@ -33,10 +33,10 @@ test: $(TARGET)
 	make test-shared
 
 test-static: $(STATIC_TARGET)
-	GTEST_COLOR=1 ./test.static.out
+	GTEST_COLOR=1 ./$(STATIC_TARGET)
 
 test-shared: $(SHARED_TARGET)
-	LD_LIBRARY_PATH=../../lib:${LD_LIBRARY_PATH} GTEST_COLOR=1 ./test.shared.out
+	LD_LIBRARY_PATH=../../lib:${LD_LIBRARY_PATH} GTEST_COLOR=1 ./$(SHARED_TARGET)
 
 clean:
 	rm -f *.o
