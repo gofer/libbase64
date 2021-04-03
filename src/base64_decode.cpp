@@ -2,12 +2,12 @@
 
 namespace Base64 {
   int _get_char(char ch) {
-    if('A' <= ch && ch <= 'Z') return (ch - 'A');      else
-    if('a' <= ch && ch <= 'z') return 26 + (ch - 'a'); else
-    if('0' <= ch && ch <= '9') return 52 + (ch - '0'); else
-    if(ch == '+') return 62; else
-    if(ch == '/') return 63; else
-    if(ch == '=') return 0;
+    if ('A' <= ch && ch <= 'Z') return (ch - 'A');      else
+    if ('a' <= ch && ch <= 'z') return 26 + (ch - 'a'); else
+    if ('0' <= ch && ch <= '9') return 52 + (ch - '0'); else
+    if (ch == '+') return 62; else
+    if (ch == '/') return 63; else
+    if (ch == '=') return 0;
     return -1;
   }
   
