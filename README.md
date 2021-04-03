@@ -59,5 +59,5 @@ That code is compiled on following commands.
 
 In detail, see sample directory.
 
-## Licence
+## License
 This codes are licensed by New BSD License.
