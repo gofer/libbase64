@@ -19,19 +19,25 @@ namespace Base64 {
                  _get_char(in[2]) << 6  | 
                  _get_char(in[3]);
     
-    char s[4];
+    char s[3];
     s[0] = (n & 0x00FF0000) >> 16;
     s[1] = (n & 0x0000FF00) >> 8;
     s[2] = (n & 0x000000FF) >> 0;
-    s[3] = '\0';
     
-    return std::string(s);
+    return std::string(s, 3);
   }
   
   int decode(const std::string* src, std::string* dst) {
     for (uint64_t i = 0; i < src->length(); i += 4)
     {
       dst->append( _decode_split(src->substr(i, 4)) );
+    }
+    for (uint64_t i = 1; i <= std::min(static_cast<std::string::size_type>(3), src->size()); ++i)
+    {
+      if (src->at(src->size() - i) == '=')
+      {
+        dst->pop_back();
+      }
     }
     return 0;
   }
@@ -42,6 +48,13 @@ namespace Base64 {
     {
       dst.append( _decode_split(src.substr(i, 4)) );
     }
+    for (uint64_t i = 1; i <= std::min(static_cast<std::string::size_type>(3), src.size()); ++i)
+    {
+      if (src.at(src.size() - i) == '=')
+      {
+        dst.pop_back();
+      }
+    } 
     return dst;
   }
 };
